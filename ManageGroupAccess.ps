@@ -1,0 +1,13 @@
+# Login to Azure
+Connect-AzAccount
+
+# List of your subscription Ids
+$subscriptionIds = @("<subscriptionId1>", "<subscriptionId2>", ..., "<subscriptionId140>")
+
+foreach ($subscriptionId in $subscriptionIds) {
+    # Select the subscription
+    Select-AzSubscription -SubscriptionId $subscriptionId
+
+    # Assign the role
+    New-AzRoleAssignment -ObjectId <principalId> -RoleDefinitionName <roleId> -ResourceGroupName <resourceGroupName> -ResourceName <cognitiveServicesAccountName> -ResourceType "Microsoft.CognitiveServices/accounts"
+}
